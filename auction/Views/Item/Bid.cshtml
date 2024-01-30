@@ -1,0 +1,46 @@
+﻿@model assignment1web.Models.ItemViewModel
+
+@{
+    ViewData["Title"] = "Make a Bid";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">
+                    Bidding
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img height="320" width="400" src=" @Html.DisplayFor(model => model.ImageUrl)" />
+                        </div>
+                        <div class="col-md-6">
+                            <h3>@Html.DisplayFor(model => model.ProductName)</h3>
+                            <p>@Html.DisplayFor(model => model.Productdescription)</p>
+                            <form asp-action="Bid" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                    <label asp-for="ItemId" class="control-label"></label>
+                                    <input asp-for="ItemId" class="form-control" readonly/>
+                                    <span asp-validation-for="ItemId" class="text-danger"></span>
+                                    </div>
+                                    <p>Minimum Bid: $@Html.DisplayFor(model => model.MinimumBid)</p>
+                                    <label asp-for="BidderName" class="control-label"></label>
+                                    <input asp-for="BidderName" class="form-control" />
+                                    <span asp-validation-for="BidderName" class="text-danger"></span>
+
+                                    <label asp-for="Amount" class="control-label"></label>
+                                    <input asp-for="Amount" class="form-control" />
+                                    <span asp-validation-for="Amount" class="text-danger"></span>
+                                </div><br />
+                                <button type="submit" class="btn btn-primary">Submit Bid</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

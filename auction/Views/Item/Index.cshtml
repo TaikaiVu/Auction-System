@@ -1,0 +1,99 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@model List<assignment1web.Models.ItemViewModel>
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "All Item";
+    var success = TempData["successMessage"]?.ToString();
+    var error = TempData["errorMessage"]?.ToString();
+
+
+
+}
+
+<h3>@ViewData["Tile"]</h3>
+
+@if (!string.IsNullOrWhiteSpace(success))
+{
+    <div class="alert alert-success">
+        <strong>Success! </strong>@success
+    </div>
+}
+else if (!string.IsNullOrWhiteSpace(error))
+{
+    <div class="alert alert-danger">
+        <strong>Error! </strong>@error
+    </div>
+}
+<style>
+    input {
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        width: 20%;
+        height: 30px;
+        margin-top: 3%;
+    }
+</style>
+
+
+
+<a asp-controller="Item" asp-action="Search" class="btn btn-info">Search</a>
+
+<hr />
+
+
+
+
+<div class="container">
+
+    <div class="row">
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <a asp-controller="Item" asp-action="Detail" asp-route-id="@item.ItemId"><img src="@item.ImageUrl" class="img-thumbnail" /></a>
+
+                        <div class="card-body">
+                            <h3 class="card-title">@item.ProductName</h3>
+                            <p class="card-text">Product ID: @item.ItemId
+                            <p class="card-text">Description: @item.Productdescription</p>
+                            <p class="card-text">Initial Bid: $@item.MinimumBid</p>
+                            <p class="card-text">Leading bid: $@item.Amount</p>
+                            <p class="card-text">Leading user: @item.BidderName</p>
+                           
+                                @if (SignInManager.IsSignedIn(User))
+                                {
+                                <a asp-controller="Item" asp-action="Edit" asp-route-id="@item.ItemId" class="btn btn-info">Edit</a>
+                                <a asp-controller="Item" asp-action="Delete" asp-route-id="@item.ItemId" class="btn btn-danger">Delete</a>
+                                }
+                                else 
+                                {
+                                <a asp-controller="Item" asp-action="Bid" asp-route-id="@item.ItemId" class="btn btn-info">Make a Bid</a>
+
+                                }
+                        </div>
+
+
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div>
+                There are no item that is on the aution yet !
+            </div>
+
+        }
+    </div>
+
+
+
+
+</div>
+

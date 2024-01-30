@@ -1,0 +1,70 @@
+﻿@model assignment1web.Models.Data.Item
+
+@{
+    ViewData["Title"] = "View items";
+    var error = TempData["errorMessage"]?.ToString();
+}
+
+<h1 style="text-align: center">Search Item on Auction</h1>
+
+<hr />
+@if (!string.IsNullOrWhiteSpace(error))
+{
+    <div class="alert alert-danger">
+        <strong>Error! </strong>@error
+        <button type="button" class="btn-close float-end" data-bs-dissmiss="alert"></button>
+
+    </div>
+}
+
+<form method="get" asp-action="Search">
+    <p>
+        <input type="search" placeholder="Enter Item Name or Category.."
+               value="@ViewData["Getitemdetails"]" name="itemSearch" style="width: 350px;" />
+        <h7 style="text-align: center">
+            And/Or </h7>
+        <input type="search" placeholder="Enter Item Status or Description.."
+               value="@ViewData["Getitemdetails"]" name="itemSearch" style="width: 350px;" />
+        <input type="submit" value="Search" class="btn btn-primary" />
+        <a asp-action="Search">Get All Items</a>
+
+    </p>
+</form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemId)
+            </th>
+            <th>
+                <a asp-action="Search" asp-all-route-sortOrder="@ViewData["NameSortParam"]">
+                    @Html.DisplayNameFor(model => model.ProductName)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Search" asp-all-route-sortOrder="@ViewData["PriceSortParam"]">
+                    @Html.DisplayNameFor(model => model.MinimumBid)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Search" asp-all-route-sortOrder="@ViewData["CategorySortParam"]">
+                    @Html.DisplayNameFor(model => model.Category)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Search" asp-all-route-sortOrder="@ViewData["CondSortParam"]">
+                @Html.DisplayNameFor(model => model.AssetCondition)
+                </a>
+            </th>
+            <th>
+                <a>
+                    @Html.DisplayNameFor(model => model.ItemImage)
+                </a>
+            </th>
+        </tr>
+    </thead>
+</table>
+
+

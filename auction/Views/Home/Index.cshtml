@@ -1,0 +1,98 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<style>
+
+
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    /* landing */
+
+    h1 {
+        text-align: center;
+        font-size: 80px;
+        margin: 0;
+    }
+
+    h3 {
+        text-align: center;
+        font-size: 50px;
+        margin: 0;
+    }
+
+    p {
+        color: #333;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .offer a {
+        border: solid 2px white;
+        color: white;
+        background-color: dodgerblue;
+        padding: 10px;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        width: 5%;
+    }
+
+        .offer a:hover {
+            color: dodgerblue;
+            border: solid 2px dodgerblue;
+            background-color: white;
+        }
+
+
+    .already {
+        background-color: #f1f1f1;
+        text-align: center;
+        padding: 16px;
+        margin-top: 150px;
+    }
+</style>
+
+<!-- welcome part -->
+
+<br>
+<br>
+<br>
+<br>
+
+<div>
+    <h1>The official site of George Brown's bidding.</h1>
+    <h3> Just like you like it! </h3>
+    <br>
+    <br>
+    <p>Place designed for all the GBC communities to make any online auction. Safe and fast as you want.</p>
+</div>
+
+<div class="offer">
+    <br>
+    <br>
+    <p>Register to start bidding on items, purchasing your favorites 
+        or sell what you have to offer. One click away!</p>
+    <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+</div>
+
+
+<div class="already">
+    <p>Already have an account? Don't worry, we got you covered.<a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a></p>
+</div>
+
+<br>
+<hr>
+<footer>
+    <h2>About the amazing team responsible for the project</h2>
+    <pre>Group number: 50
+Koichi Kumo - 101354581
+Huynh Huy - 101369909
+Taikai Vu - 101354480
+Diego Plata - 101354581
+CRN-48622-202202.
+    </pre>
+</footer>
+
